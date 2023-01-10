@@ -41,7 +41,6 @@ This is needed to get know the sytem's software and hardware details. With the h
 
    >	`sudo apt install neofetch`
 
-"neofetch"
 
 ### U Launcher 
 Install the U launcher application to quickly navigate between the applications on Ubunutu.  
