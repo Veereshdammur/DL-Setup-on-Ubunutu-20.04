@@ -45,15 +45,19 @@ This is needed to get know the sytem's software and hardware details. With the h
 ### U Launcher 
 Install the U launcher application to quickly navigate between the applications on Ubunutu.  
 
+```
+#Install via PPA (Ubuntu): 
+sudo add-apt-repository ppa:agornostal/ulauncher && sudo apt update && sudo apt install ulauncher
+```
 
-Install via PPA (Ubuntu): 
->`sudo add-apt-repository ppa:agornostal/ulauncher && sudo apt update && sudo apt install ulauncher`
+
 
 ## Install Google Chrome
 
-Install google chrome browser
- 
->`sudo dpkg -i <chrome-file-name.deb>`
+```
+# Install google chrome browser
+sudo dpkg -i <chrome-file-name.deb>
+```
 
 
 ## Install Anaconda
