@@ -37,9 +37,15 @@ reboot
 
 ###  Neofetch 
 
-This is needed to get know the sytem's software and hardware details. With the hep of this library, we can get to know the GPU model name.  
+This is needed to get know the sytem's software and hardware details. With the hep of this library, we can get to know the GPU model name.  Later this model number will help us to downlaod the recommended cuda tools for leveraging the GPU. 
 
-   >	`sudo apt install neofetch`
+   
+   ```
+   # install it by running the following command 
+   sudo apt install neofetch
+	# launch it 
+	neofetch
+   ```
 
 
 ### U Launcher 
