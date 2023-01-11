@@ -32,6 +32,9 @@ reboot
 ```
 
 
+
+
+
 ## Install utility applications (optional)
 
 
@@ -84,5 +87,77 @@ shasum -a Anaconda3-2022.10-Linux-x86_64.sh
 bash ~/Downloads/Anaconda3-2022.10-Linux-x86_64.sh
 
 ```
+
+
+
+-------------------
+
+# Install cuda toolkit 
+
+When installing CUDA, I usually follow the CUDA installation guide, which is very complete  ([https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)).
+
+
+> *Note:  This guide aims to install the cuda 11.7 version which was release in August 2022 and this toolkit also install the right version of the Nvidia driver*
+
+
+## Pre-installation checks 
+
+Perform the preinstallation checks to avoid messing up with the installation of the cuda. 
+
+
+1. To verify if our GPU is CUDA-cable, issue the below command,     
+		`lspci | grep -i nvidia`
+	Nvidia products contain the respective release notes.  
+	
+2. Verify you are running 64 bit  OS, 
+		`uname -m && cat /etc/*release`
+	You should  be able to see something like this, `x86_64`
+
+3. verify gcc is installed on your system, 
+		`gcc --version  # TO install gcc, sudo apt install build-essential`
+		
+
+4. Verify the System has the Correct Kernel Headers and Development Packages Installed. TO know the version of the kernel, 
+		`uname  -r`
+	 This is the version of the kernel headers and development packages that must be installed prior to installing the CUDA Drivers.
+
+5. The kernel headers and development packages for the currently running kernel can be installed with: (*very important step*)
+		`sudo apt-get install linux-headers-$(uname -r)`   
+ 
+ 6. Remove the outdated signing key (*improtant step*)   
+	 sudo apt-key del 7fa2af80
+
+
+
+## Installing cuda Toolkit (11. 7v)
+
+We choose debian (local) package installation method to install the cuda on Ubunutu 20.04 LTS.  
+
+
+
+```
+# step 1 
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+
+# step 2 
+sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+
+# step 3
+wget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda-repo-
+ubuntu2004-11-7-local_11.7.1-515.65.01-1_amd64.deb
+
+# step 4
+sudo dpkg -i cuda-repo-ubuntu2004-11-7-local_11.7.1-515.65.01-1_amd64.deb
+
+# step 5
+sudo cp /var/cuda-repo-ubuntu2004-11-7-local/cuda-*-keyring.gpg /usr/share/keyrings/
+
+# step 6
+sudo apt-get update
+
+# step 7
+sudo apt-get -y install cuda
+```
+
 
 
