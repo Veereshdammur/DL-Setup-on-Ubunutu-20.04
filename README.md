@@ -205,6 +205,78 @@ cd ../bandwidthTest/
 
 ```
 
+--------------
+
+# Install cudaNN library 
+
+
+> *Note : In this guide we aim to install CudaNN v8.5.0  for Cuda 11.x (launched in August 2022)*
+
+
+
+## Pre-installation checks
+
+1. Make sure Nvidia's graphic drivers and Cuda toolkit are installed on the Ubunutu machine. 
+2. Install the zlib library on Ubunutu
+	`sudo apt-get install zliblg`
+
+
+
+## Install cudaNN 
+
+- You would need an account with Nvidia developer website. Do create one if there isn't. Download the CudaNN debian package for UBunut 20.04 LTS ([Download cuDNN v8.5.0 (August 8th, 2022), for CUDA 11.x](https://developer.nvidia.com/rdp/cudnn-archive#a-collapse850-116)) 
+  download link : https://developer.nvidia.com/rdp/cudnn-archive
+
+
+```
+# step 1: Navigate to your <cudnnpath> directory containing the cuDNN Debian local installer file.(swith to Download direcotry)
+
+# step 2: Enable the local repository.
+sudo dpkg -i cudnn-local-repo-ubuntu2204-8.5.0.96_1.0-1_amd64.deb
+
+# step 3: Import the CUDA GPG key. 
+sudo cp /var/cudnn-local-repo-*/cudnn-local-*-keyring.gpg /usr/share/keyrings/
+
+# step 4: Refresh the repository metadata
+sudo apt-get update
+ 
+# step 5: Install the runtime library.
+sudo apt-get install libcudnn8=8.5.0.96-1+cuda11.7
+
+# step 6: Install the developer library.
+sudo apt-get install libcudnn8-dev=8.5.0.96-1+cuda11.7
+
+# step 7: Install the code samples and the cuDNN library documentation.
+sudo apt-get install libcudnn8-samples=8.5.0.96-1+cuda11.7
+
+```
+
+
+## Post installation
+
+### Verfify the CudaNN installation 
+
+By referring to the official CudaNN installation [guide](https://docs.nvidia.com/deeplearning/cudnn/index.html) for the Linux, 
+
+```
+# step 1: Copy the cuDNN samples to a writable path.   
+cp -r /usr/src/cudnn_samples_v8/ $HOME
+
+# step 2:  Go to the writable path.
+cd  $HOME/cudnn_samples_v8/mnistCUDNN
+   
+# step 3: Compile the mnistCUDNN sample.
+make clean && make
+   
+# step 4: Run the mnistCUDNN sample.
+ ./mnistCUDNN
+   
+# If cuDNN is properly installed and running on your Linux system, you will see a message similar to the following:
+# Test passed!
+
+
+```
+
 
 
 
