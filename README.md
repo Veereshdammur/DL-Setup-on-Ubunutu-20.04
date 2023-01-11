@@ -160,4 +160,51 @@ sudo apt-get -y install cuda
 ```
 
 
+## Post installtion steps 
+
+
+1. Add the below path to `PATH` variable
+`export PATH=/usr/local/cuda-12.0/bin${PATH:+:${PATH}}`
+
+
+### Verify the cuda toolkit installation
+
+- Verify the driver version by running the below command,
+`cat /proc/driver/nvidia/version`
+
+- Run the deviceQuery and bandwidthTest for verifying the cuda installtaion
+
+``` 
+# step 0: naviagte to Download dir
+cd ~/Downloads
+
+# step 1: Download the cuda sampels 
+git clone https://github.com/NVIDIA/cuda-samples.git
+
+# step 2: switch to cuda-samples dir
+cd cuda-samples/
+
+# step 3: checkout to the old release because we are using cuda 11.7
+git checkout v11.6
+
+# step 4: build the cuda samples 
+make 
+
+# step 5: navigate to devicequery
+cd Samples/1_Utilities/deviceQuery
+
+# step 6: run the below command and check if tests have been passed. This ensures cuda software is installed and configured properly. Please refer to the below screenshot for the sample output.   
+./deviceQuery
+
+# step 7: Navigate to bandwidthtest dir
+cd ../bandwidthTest/
+
+# step 8: run the bandwdith test to ensure system and cuda-capable devices communicate properly. A sample output is shown in the below screenshots.   
+./bandwidthTest
+
+
+```
+
+
+
 
