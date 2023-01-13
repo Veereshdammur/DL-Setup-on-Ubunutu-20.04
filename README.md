@@ -274,9 +274,13 @@ make clean && make
 # If cuDNN is properly installed and running on your Linux system, you will see a message similar to the following:
 # Test passed!
 
-
 ```
 
 
+![mnsit_in](imgs/mnsit_in.png)
+
+
+
+![mnsitcuNN_out](imgs/mnsitcuNN_out.png)
 
 
