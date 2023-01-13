@@ -8,9 +8,9 @@ This repo walks you through the steps that are needed for the installation of th
 
 ## Tabel of contents
 
-1. Ubuntu setup 
-2. Install Cuda library
-3. Install CudaNN
+1. Install Ubuntu 20.04 LTS
+2. Install Cuda Toolkit
+3. Install CudaNN Library
 4. Install the DL frameworks 
 
 
@@ -92,7 +92,7 @@ bash ~/Downloads/Anaconda3-2022.10-Linux-x86_64.sh
 
 -------------------
 
-# Install cuda toolkit 
+# Install Cuda Toolkit 
 
 When installing CUDA, I usually follow the CUDA installation guide, which is very complete  ([https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)).
 
@@ -204,6 +204,17 @@ cd ../bandwidthTest/
 
 
 ```
+A sample output of the devicequery is shown below:  
+
+![deviceQuery](imgs/deviceQuery.png)
+
+
+A sample output of the bandwidthTest is shown below:  
+
+![bandwidthTest](imgs/bandwidthTest.png)
+
+
+
 
 --------------
 
@@ -284,3 +295,33 @@ make clean && make
 ![mnsitcuNN_out](imgs/mnsitcuNN_out.png)
 
 
+-----------------------
+
+# Install the Deep learning frameworks (Tensorflow, Pytorch)
+
+```
+# step 1: create a conda env 
+conda create -n test_env python=3.9
+
+# step 2: activate the created env 
+conda activate test_env
+
+# step 3: install the pytorch using conda (make sure you slect the currect installed version of the cuda) 
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+
+# step 4: install tensorflow 
+python3 -m pip install tensorflow
+
+# step 5: Verify wether pytorch detects GPU or not  
+python3 -c "import torch; print(torch.cuda.is_available())"
+
+# step 6: Verify wether Tensorflow detects GPU or not  
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+
+```
+
+
+
+![dl_frameworks](imgs/dl_frameworks.png)
+
+This completes the Deep learning setup on Ubunutu machine!!
