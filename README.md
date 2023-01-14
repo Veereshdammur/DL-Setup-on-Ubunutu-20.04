@@ -199,7 +199,8 @@ cd Samples/1_Utilities/deviceQuery
 # step 7: Navigate to bandwidthtest dir
 cd ../bandwidthTest/
 
-# step 8: run the bandwdith test to ensure system and cuda-capable devices communicate properly. A sample output is shown in the below screenshots.   
+# step 8: run the bandwdith test to ensure system and cuda-capable devices communicate properly. 
+# A sample output is shown in the below screenshots.   
 ./bandwidthTest
 
 
